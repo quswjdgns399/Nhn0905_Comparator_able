@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Department<E> implements Iterable<E> {
+public class Department<E extends Person> implements Iterable<E> {
 
     private int department;
     private String departmentName;
@@ -39,8 +41,16 @@ public class Department<E> implements Iterable<E> {
         this.departmentName = name;
     }
 
-    public void add(E student) {
-        list.add(student);
+    public void add(E person) {
+        list.add(person);
+    }
+
+    public void sort() {
+        Collections.sort(this.list);
+    }
+
+    public void sort(Comparator<Person> compare) {
+        Collections.sort(this.list, compare);
     }
 
     @Override
